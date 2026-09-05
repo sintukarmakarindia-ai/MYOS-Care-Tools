@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="theme-color"
+      content="#1769e0">
+
+<title>MYOS Care Tools</title>
+
+
+<style>
+
+/* ========================================================
+   RESET
+======================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+
+/* ========================================================
+   FULL SCREEN BODY
+======================================================== */
+
+html,
+body{
+
+    width:100%;
+    min-width:100%;
+
+    height:100%;
+    min-height:100%;
+
+    margin:0;
+    padding:0;
+
+    background:#f3f6fb;
+
+    overflow-x:hidden;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+/* ========================================================
+   APP - FULL PHONE SCREEN
+======================================================== */
+
+.app{
+
+    width:100%;
+    max-width:none;
+
+    min-width:100%;
+
+    min-height:100vh;
+    min-height:100dvh;
+
+    margin:0;
+
+    background:#fff;
+
+    display:flex;
+    flex-direction:column;
+}
+
+
+/* ========================================================
+   HEADER
+======================================================== */
+
+.header{
+
+    width:100%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1769e0,
+            #063b91
+        );
+
+    color:white;
+
+    padding:
+        calc(28px + env(safe-area-inset-top))
+        20px
+        25px;
+
+    border-radius:0 0 25px 25px;
+
+    flex-shrink:0;
+}
+
+.logo{
+
+    font-size:26px;
+
+    font-weight:700;
+
+    line-height:1.2;
+}
+
+.subtitle{
+
+    margin-top:6px;
+
+    font-size:13px;
+
+    opacity:.88;
+
+    line-height:1.4;
+}
+
+
+/* ========================================================
+   CONTENT
+======================================================== */
+
+.content{
+
+    width:100%;
+
+    flex:1;
+
+    padding:
+        22px
+        18px
+        35px;
+
+    background:#fff;
+}
+
+.title{
+
+    font-size:19px;
+
+    font-weight:700;
+
+    margin-bottom:17px;
+}
+
+
+/* ========================================================
+   OPTIONS GRID
+======================================================== */
+
+.options{
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:14px;
+}
+
+
+/* ========================================================
+   OPTION CARD
+======================================================== */
+
+.option{
+
+    width:100%;
+
+    min-height:135px;
+
+    padding:18px 14px;
+
+    border:
+        1px solid #e4e7ec;
+
+    border-radius:17px;
+
+    background:#fff;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 4px 14px rgba(0,0,0,.055);
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    overflow:hidden;
+}
+
+.option:hover{
+
+    box-shadow:
+        0 7px 20px rgba(0,0,0,.09);
+}
+
+.option:active{
+
+    transform:scale(.97);
+}
+
+
+/* ========================================================
+   OPTION ICON
+======================================================== */
+
+.option-icon{
+
+    width:48px;
+
+    height:48px;
+
+    min-width:48px;
+
+    border-radius:14px;
+
+    background:#eaf2ff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:25px;
+
+    margin-bottom:12px;
+}
+
+
+/* ========================================================
+   OPTION NAME
+======================================================== */
+
+.option-name{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    line-height:1.3;
+
+    word-break:break-word;
+}
+
+
+/* ========================================================
+   OPEN TEXT
+======================================================== */
+
+.open-text{
+
+    margin-top:6px;
+
+    color:#1769e0;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    min-height:18px;
+}
+
+
+/* ========================================================
+   OPENING TEXT
+======================================================== */
+
+.open-text.opening{
+
+    color:#16a34a;
+}
+
+
+/* ========================================================
+   RED SPINNER
+======================================================== */
+
+.spinner{
+
+    width:15px;
+
+    height:15px;
+
+    min-width:15px;
+
+    border:
+        3px solid #fecaca;
+
+    border-top:
+        3px solid #ef1d1d;
+
+    border-right:
+        3px solid #ef1d1d;
+
+    border-radius:50%;
+
+    display:inline-block;
+
+    animation:
+        myosSpin .7s linear infinite;
+}
+
+
+@keyframes myosSpin{
+
+    0%{
+        transform:rotate(0deg);
+    }
+
+    100%{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* ========================================================
+   EMPTY
+======================================================== */
+
+.empty{
+
+    display:none;
+
+    text-align:center;
+
+    padding:45px 20px;
+
+    color:#667085;
+}
+
+
+/* ========================================================
+   FOOTER
+======================================================== */
+
+.footer{
+
+    width:100%;
+
+    text-align:center;
+
+    padding:
+        22px 15px
+        calc(22px + env(safe-area-inset-bottom));
+
+    font-size:11px;
+
+    color:#98a2b3;
+
+    background:#fff;
+
+    flex-shrink:0;
+}
+
+
+/* ========================================================
+   SMALL PHONES
+======================================================== */
+
+@media(max-width:380px){
+
+    .content{
+
+        padding-left:12px;
+        padding-right:12px;
+
+    }
+
+    .options{
+
+        gap:10px;
+
+    }
+
+    .option{
+
+        min-height:125px;
+
+        padding:15px 12px;
+
+    }
+
+    .option-icon{
+
+        width:44px;
+        height:44px;
+
+        min-width:44px;
+
+        font-size:23px;
+
+        margin-bottom:10px;
+
+    }
+
+    .option-name{
+
+        font-size:14px;
+
+    }
+
+}
+
+
+/* ========================================================
+   VERY SMALL SCREEN
+======================================================== */
+
+@media(max-width:320px){
+
+    .options{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+/* ========================================================
+   LANDSCAPE PHONE
+======================================================== */
+
+@media(
+    orientation:landscape
+){
+
+    .app{
+
+        min-height:100dvh;
+
+    }
+
+    .header{
+
+        padding-top:
+            calc(18px + env(safe-area-inset-top));
+
+        padding-bottom:18px;
+
+    }
+
+    .content{
+
+        padding-top:18px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- ==================================================
+         HEADER
+    ================================================== -->
+
+    <div class="header">
+
+        <div class="logo">
+            MYOS Care Tool
+        </div>
+
+        <div class="subtitle">
+            Designed &amp; Developed by MYOS by Sintu
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         CONTENT
+    ================================================== -->
+
+    <div class="content">
+
+        <div class="title">
+        </div>
+
+
+        <div
+            class="options"
+            id="optionsContainer">
+        </div>
+
+
+        <div
+            class="empty"
+            id="emptyMessage">
+
+            No tools available.
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
+
+    <div class="footer">
+
+        MYOS by Sintu
+
+        <br>
+
+        © 2026 All Rights Reserved.
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+/* ========================================================
+   
+        MYOS CARE TOOL
+        OPTION SETTINGS
+
+========================================================
+
+নতুন option যোগ করতে শুধু নিচের OPTIONS-এর মধ্যে
+এই format ব্যবহার করবে:
+
+{
+    name: "New Tool",
+    icon: "🛠️",
+    link: "https://example.com"
+}
+
+IMPORTANT:
+Link-এর মধ্যে [ ] বা ( ) ব্যবহার করবে না।
+শুধু সরাসরি URL লিখবে।
+
+======================================================== */
+
+
+const OPTIONS = [
+
+    {
+        name: "Premium Calculator",
+        icon: "🧮",
+        link: "https://abacus.careinsurance.com/religare/partner/generic-religare-know-popup"
+    },
+
+
+    {
+        name: "Age Calculator",
+        icon: "🧓🏻",
+        link: "https://sites.google.com/view/care-tool-from-myos/age-calculator"
+    },
+
+
+    {
+        name: "Loan Protector",
+        icon: "📔",
+        link: "https://sites.google.com/view/care-tool-from-myos/loan-protector"
+    },
+
+
+    {
+        name: "Wellness Product",
+        icon: "🗒️",
+        link: "https://sites.google.com/view/care-tool-from-myos/wellness-product"
+    },
+
+
+    {
+        name: "Waiting Period",
+        icon: "🚧",
+        link: "https://sites.google.com/view/care-tool-from-myos/waiting-period"
+    },
+
+
+    {
+        name: "Form Section",
+        icon: "📃",
+        link: "https://sites.google.com/view/care-tool-from-myos/all-type-of-forms"
+    },
+
+
+    {
+        name: "RM Portal",
+        icon: "💻",
+        link: "https://rmportal.careinsurance.com/rmportal2/"
+    },
+
+
+    {
+        name: "Claim Portal",
+        icon: "🚨",
+        link: "https://www.careinsurance.com/rhicl/claim/login"
+    },
+
+
+    {
+        name: "Self Help Portal",
+        icon: "🖨️",
+        link: "https://selfcare.careinsurance.com"
+    },
+
+
+    {
+        name: "Password Change Portal",
+        icon: "🔐",
+        link: "https://pmsext.careinsurance.com/authorization.do"
+    },
+
+
+    {
+        name: "Network Hospital",
+        icon: "🏨",
+        link: "https://www.careinsurance.com/health-plan-network-hospitals.html?bank="
+    },
+
+
+    {
+        name: "Leaflet Section",
+        icon: "🃏",
+        link: "https://sites.google.com/view/care-tool-from-myos/leaflet-section"
+    },
+
+
+    {
+        name: "Video Section",
+        icon: "🎥",
+        link: "https://sites.google.com/view/care-tool-from-myos/video-section"
+    },
+
+
+    {
+        name: "Instabiz App",
+        icon: "🔋",
+        link: "https://play.google.com/store/apps/details?id=com.religarepartner"
+    },
+
+
+    {
+        name: "Faveo",
+        icon: "📱",
+        link: "https://faveo.careinsurance.com/NewFaveo/#auth/login"
+    },
+
+
+    {
+        name: "Bank Holiday Calendar",
+        icon: "📆",
+        link: "https://sites.google.com/view/care-tool-from-myos/bank-holiday-calendar"
+    },
+
+
+    {
+        name: "Flatfile Entry Portal",
+        icon: "📝",
+        link: "https://sites.google.com/view/care-tool-from-myos/flatfile-entry"
+    }
+
+];
+
+
+
+/* ========================================================
+   
+        LOAD OPTIONS
+
+======================================================== */
+
+
+function loadOptions(){
+
+    const container =
+        document.getElementById(
+            "optionsContainer"
+        );
+
+
+    const empty =
+        document.getElementById(
+            "emptyMessage"
+        );
+
+
+    container.innerHTML = "";
+
+
+    if(OPTIONS.length === 0){
+
+        empty.style.display = "block";
+
+        return;
+
+    }
+
+
+    empty.style.display = "none";
+
+
+    OPTIONS.forEach(function(option){
+
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "option";
+
+
+        card.innerHTML = `
+
+            <div class="option-icon">
+                ${escapeHTML(option.icon)}
+            </div>
+
+            <div class="option-name">
+                ${escapeHTML(option.name)}
+            </div>
+
+            <div class="open-text">
+                Open →
+            </div>
+
+        `;
+
+
+        /* =================================================
+           
+           CLICK EVENT
+
+        ================================================= */
+
+
+        card.onclick = function(){
+
+
+            const openText =
+                card.querySelector(
+                    ".open-text"
+                );
+
+
+            if(!openText){
+
+                return;
+
+            }
+
+
+            /* Prevent double click */
+
+            if(
+                openText.classList.contains(
+                    "opening"
+                )
+            ){
+
+                return;
+
+            }
+
+
+            /* Opening state */
+
+            openText.classList.add(
+                "opening"
+            );
+
+
+            openText.innerHTML = `
+
+                <span>
+                    Opening
+                </span>
+
+                <span
+                    class="spinner">
+                </span>
+
+            `;
+
+
+            /* Open link */
+
+            setTimeout(function(){
+
+                openLink(option.link);
+
+            },250);
+
+            /* Reset back to normal after 2 seconds (2000ms) */
+            setTimeout(function(){
+
+                openText.classList.remove("opening");
+                openText.innerHTML = "Open →";
+
+            }, 2000);
+
+
+        };
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+
+/* ========================================================
+   
+        OPEN LINK
+
+======================================================== */
+
+
+function openLink(link){
+
+    if(!link){
+
+        return;
+
+    }
+
+
+    window.open(
+        link,
+        "_blank"
+    );
+
+}
+
+
+
+/* ========================================================
+   
+        SECURITY
+
+======================================================== */
+
+
+function escapeHTML(value){
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+
+/* ========================================================
+   
+        START APP
+
+======================================================== */
+
+
+loadOptions();
+
+</script>
+
+
+</body>
+</html>
